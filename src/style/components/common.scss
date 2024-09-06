@@ -1,0 +1,406 @@
+
+
+*, ::after, ::before
+{
+	box-sizing: border-box;
+}
+
+html,
+body
+{
+	height: 100vh;
+}
+
+@media (min-width: $mobile-width)
+{
+	html,
+	body
+	{
+		min-width: 1350px;
+	}
+}
+
+body
+{
+	margin: 0;
+	padding: 0;
+
+	background-color: #E9E9E9;
+
+	font-family: 'Montserrat-Lite', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.5;
+}
+
+h1, h2
+{
+	font-family: 'Montserrat-Bold';
+}
+
+h3
+{
+	font-family: 'Montserrat-Medium';
+}
+
+a
+{
+	color: $color-a;
+	text-decoration: none;
+}
+
+span a
+{
+	border-bottom: 1px solid $color-a;
+}
+
+b
+{
+	font-family: 'Montserrat-Medium';
+}
+
+b.lite
+{
+	font-family: 'Montserrat-Lite';
+}
+
+[hidden]
+{
+	display: none;
+}
+
+@font-face {
+	font-family: 'Montserrat-Bold';
+	src: url('/fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+	font-family: 'Montserrat-Medium';
+	src: url('/fonts/Montserrat-Medium.ttf');
+}
+
+@font-face {
+	font-family: 'Montserrat-Lite';
+	src: url('/fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
+	font-family: 'Montserrat-ExtraLite';
+	src: url('/fonts/Montserrat-ExtraLight.ttf');
+}
+
+code
+{
+	background-color: #eee;
+	border-radius: 3px;
+	font-family: courier, monospace;
+	padding: 0 3px;
+}
+
+pre
+{
+	padding: 1em;
+	background-color: rgba(0, 0, 0, 0.09);
+}
+
+#wrapper
+{
+	width: 100%;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	color: #000;
+}
+
+#content
+{
+	padding-top: 2rem;
+}
+
+[data-block="main"]
+{
+	font-size: 1.2em;
+}
+
+.text-icon
+{
+	margin: auto 15px;
+	font-size: 3rem;
+}
+
+
+.check-list
+{
+	list-style: none;
+}
+
+.check-list li
+{
+	list-style-image: url('/img/checkbox.svg');
+}
+
+.check-list li.check
+{
+	list-style-image: url('/img/checkbox-check.svg');
+}
+
+.check-list li::marker
+{
+	font-size: 3rem;
+	line-height: 1;
+}
+
+.span-paragraph span
+{
+	margin-bottom: 1em;
+}
+
+table
+{
+	margin-bottom: 1em;
+	border-collapse: collapse;
+}
+
+thead tr:first-child th
+{
+	padding-bottom: 0.75em;
+	border: none;
+}
+
+th
+{
+	text-align: center;
+}
+
+td
+{
+	text-align: right;
+}
+
+th, td
+{
+	padding: 0.25em 1em;
+	border: 1px solid black;
+}
+
+.borderless
+{
+	border: none;
+}
+
+.borderless *
+{
+	border: none;
+}
+
+.borderless th, td
+{
+	padding: 0 1em;
+}
+
+#footer
+{
+	width: 100%;
+	padding: 30px 0;
+	color: #000;
+	background-color: #FFF;
+}
+
+#footer span
+{
+	margin: auto;
+}
+
+.button
+{
+	margin: auto;
+	margin-top: 30px;
+	padding: 20px 50px;
+	color: #000;
+	background-color: #FDAC12;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.flex
+{
+	display: flex;
+}
+
+.flex.column
+{
+	flex-direction: column;
+}
+
+.flex.row
+{
+	flex-direction: row;
+}
+
+.flex.around
+{
+	justify-content: space-around;
+}
+
+.flex.between
+{
+	justify-content: space-between;
+}
+
+.flex > .center
+{
+	margin: auto;
+}
+
+.flex > .bottom
+{
+	margin-top: auto;
+}
+
+.flex > .expand
+{
+	flex-grow: 1;
+}
+
+.w_20
+{
+	width: 20%;
+}
+
+.w_30
+{
+	width: 30%;
+}
+
+.w_50
+{
+	width: 50%;
+}
+
+.mp_0_all *
+{
+	padding: 0;
+	margin: 0;
+}
+
+.p_0_all *
+{
+	padding: 0;
+	margin: 0;
+}
+
+.m_l_0
+{
+	margin-left: 0;
+}
+
+.m_b_2em
+{
+	margin-bottom: 2em;
+}
+
+.p_t_0
+{
+	padding-top: 0;
+}
+
+.p_t_15_em
+{
+	padding-top: 1.5em;
+}
+
+.p_l_4em
+{
+	padding-left: 4em;
+}
+
+.p_r_4em
+{
+	padding-right: 4em;
+}
+
+.p_h_2em
+{
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.p_v_10px
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.bg_white
+{
+	background: #FFF;
+}
+
+.opacity_0
+{
+	opacity: 0;
+}
+
+.opacity_06
+{
+	opacity: 0.6;
+}
+
+div.shadow
+{
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+span.shadow,
+b.shadow
+{
+	// text-shadow: 2px 2px 1px #F20544;
+	// text-shadow: 0.1rem 0.1rem 0.2rem #F20544;
+	text-shadow: 0.1rem 0.1rem 0.2rem rgba(242, 5, 68, 0.7);
+}
+
+.text.center
+{
+	text-align: center;
+}
+
+.text.left
+{
+	text-align: left;
+}
+
+.text.right
+{
+	text-align: right;
+}
+
+.text.red
+{
+	color: $color-red;
+}
+
+.mobile
+{
+	display: none;
+}
+
+@media (max-width: $mobile-width)
+{
+	.flex
+	{
+		flex-direction: column;
+	}
+
+	.flex.mobile
+	{
+		display: flex;
+	}
+
+	.mobile
+	{
+		display: block;
+	}
+
+	.desktop
+	{
+		display: none;
+	}
+}

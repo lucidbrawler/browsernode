@@ -1,0 +1,140 @@
+{
+	"name": "warthog-node-web",
+	"description": "",
+	"version": "1.0.3",
+	"main": "",
+	"author": "re",
+	"license": "MIT",
+	"homepage": "",
+	"devDependencies": {
+		"autoprefixer": "^10.4.4",
+		"browser-sync": "^2.27.9",
+		"del": "^6.0.0",
+		"eslint": "^8.13.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"gulp": "^4.0.2",
+		"gulp-cleancss": "^0.2.2",
+		"gulp-file-include": "^2.3.0",
+		"gulp-htmlmin": "^5.0.1",
+		"gulp-if": "^3.0.0",
+		"gulp-markdown": "^8.0.0",
+		"gulp-minify": "^3.0.0",
+		"gulp-plumber": "^1.2.1",
+		"gulp-postcss": "^9.0.1",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^5.1.0",
+		"postcss-merge-queries": "^1.0.3",
+		"sass": "^1.66.0",
+		"webpack-stream": "^7.0.0"
+	},
+	"eslintConfig": {
+		"extends": "airbnb",
+		"plugins": [
+			"html"
+		],
+		"ignorePatterns": [
+		],
+		"rules": {
+			"indent": [
+				"error",
+				"tab",
+				{
+					"SwitchCase": 1
+				}
+			],
+			"max-len": [
+				"warn",
+				{
+					"code": 100
+				}
+			],
+			"no-tabs": [
+				"error",
+				{
+					"allowIndentationTabs": true
+				}
+			],
+			"quotes": [
+				"error",
+				"single"
+			],
+			"curly": [
+				"error",
+				"multi-or-nest"
+			],
+			"object-curly-newline": [
+				"error",
+				{
+					"ImportDeclaration": "never",
+					"ExportDeclaration": "always"
+				}
+			],
+			"nonblock-statement-body-position": [
+				"error",
+				"any"
+			],
+			"comma-dangle": [
+				"error",
+				"never"
+			],
+			"no-use-before-define": [
+				"error",
+				{
+					"functions": false,
+					"classes": false,
+					"variables": false
+				}
+			],
+			"no-param-reassign": [
+				"error",
+				{
+					"props": false
+				}
+			],
+			"no-restricted-globals": [
+				"warn",
+				{
+					"name": "confirm",
+					"message": "Confirm!!!!!"
+				}
+			],
+			"import/no-unresolved": [
+				2,
+				{
+					"ignore": [
+						"\\.*$"
+					]
+				}
+			],
+			"import/extensions": [
+				"warn",
+				"ignorePackages"
+			]
+		},
+		"env": {
+			"browser": true,
+			"es6": true,
+			"node": true
+		},
+		"globals": {
+			"window": false,
+			"document": false
+		},
+		"parserOptions": {
+			"ecmaVersion": 6
+		}
+	},
+	"scripts": {
+		"test": "eslint src",
+		"clear": "gulp clear",
+		"start": "gulp dev",
+		"prod": "gulp prod"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"dependencies": {
+		"gulp-cheerio": "^1.0.0"
+	}
+}

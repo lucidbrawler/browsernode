@@ -1,0 +1,32 @@
+
+$color-red: #F20544 !default;
+
+$color-a: $color-red;
+
+$mobile-width: 600px !default;
+
+
+@import './components/common.scss';
+@import './components/header.scss';
+@import './components/pages.scss';
+
+
+#console
+{
+	width: 100%;
+	min-height: 50%;
+	flex-grow: 1;
+
+	font-family: 'Courier New', Courier, monospace;
+	color: white;
+	background-color: black;
+	font-size: 1em;
+}
+
+#header span
+{
+	letter-spacing: 0.1em;
+	font-family: "Montserrat-ExtraLite";
+	font-size: 2em;
+	margin: auto 0;
+}

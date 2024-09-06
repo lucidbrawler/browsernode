@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="./css/style.css" rel="stylesheet" type="text/css">
+    <title>Warthog Browser Node</title>
+</head>
+<body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+        <style type="text/css" media="screen">
+
+
+
+
+
+#screen-wrapper{
+    background-color:#1b1b1b; 
+    position: fixed;
+    overflow: hidden;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+}
+.screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    content: " ";
+    overflow: hidden;
+    background-color: #f0f0f0;
+    // Fallback for old browsers
+
+
+    color: #e1eef6;
+}
+        </style>
+        <section id="screen-wrapper">
+        <section class="screen">
+            <div class="content">
+	<div id="wrapper" class="flex column">
+		<div id="load"></div>
+		<div id="header" class="flex">
+			<img src="./img/main_logo.png" class="header__img-logo">
+			<span>BROWSER NODE</span>
+		</div>
+		<div class="flex row p_v_10px opacity_0"><img src="./img/main_logo.png" class="header__img-logo"></div>
+		<div id="content" class="flex column expand">
+			<div class="flex column content-block expanded expand">
+				<h3>Console</h3>
+				<textarea id="console"></textarea>
+			</div>
+			<div id="status" class="content-block text center red"></div>
+			<div id="chain-status" class="content-block">
+				<h3>Chain (<span id="length">0</span>): <span id="totalWork">0 h</span> &commat; <span id="difficulty">0 h</span> per block</h3>
+			</div>
+			<div class="flex content-block">
+				<div id="peers" class="w_50">
+					<h3>Peers (<span id="npeers">0</span>)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>In</th>
+								<th>Type</th>
+								<th>Address</th>
+								<th>Since</th>
+							</tr>
+						</thead>
+						<tbody id='peersTable'>
+						</tbody>
+					</table>
+				</div>
+				<div id="mempool" class="w_50">
+					<h3>Mempool (<span id="nmempool">0</span>)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>From</th>
+								<th>To</th>
+								<th>Amount</th>
+								<th>Fee</th>
+								<th>TxHash</th>
+							</tr>
+						</thead>
+						<tbody id='mempoolTable'>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="spinner" id='spinner'></div>
+			<!-- <div class="emscripten" id="status">Downloading...</div> -->
+			<progress value="0" max="100" id="progress" hidden=1></progress>
+
+			<!-- <div class="shadow px-4 my-4 sm:px-6 lg:px-8">
+				<p class="my-2">Console</p>
+			<textarea class="min-w-full font-mono bg-black leading-none text-slate-50 shadow" id="output" rows="8"></textarea> -->
+			<!-- </div>
+			<div class="shadow px-4 my-4 sm:px-6 lg:px-8">
+				<p class="my-2" ></p>
+			</div> -->
+			<!-- <div class="shadow px-4 my-4 sm:px-6 lg:px-8">
+				<p class="my-2" ></p>
+				<table class="font-mono tracking-wide m-1 p-2">
+					<thead>
+						<tr>
+							<th>In</th>
+							<th>Type</th>
+							<th>Address</th>
+							<thp>Since</th>
+						</tr>
+					</thead>
+					<tbody id='peersTable'>
+					</tbody>
+				</table>
+			</div>
+			<div class="shadow px-4 my-4 sm:px-6 lg:px-8">
+				<p class="my-2">Mempool (<span id="nmempool">0</span>)</p>
+				<table class="font-mono tracking-wide m-1 p-2">
+					<thead>
+						<tr>
+							<th>From</th>
+							<th>To</th>
+							<th>Amount</th>
+							<thp>Fee</th>
+							<thp>TxHash</th>
+						</tr>
+					</thead>
+					<tbody id='mempoolTable'>
+					</tbody>
+				</table>
+			</div> -->
+
+		</div>
+		<div id="footer" class="flex">
+			<span class="text center">
+				Copyright © Warthog 2024 Website Design by re. Logo by BalkyBot.
+			</span>
+		</div>
+	</div>
+            </div>
+        </section>
+        </section>
+        </div>
+        <script charset="utf-8">
+            var SELECTOR_SCREEN_ELEMENT = '.screen';
+  var SELECTOR_SWITCHER_TV = '#switcher-tv';
+
+  var isTurnedOn = true;
+
+  var timeline;
+
+  function buildTimeline() {
+    timeline = new TimelineMax({
+      paused: true
+    });
+
+    timeline
+    .to(SELECTOR_SCREEN_ELEMENT, .2, {
+      width: '100vw',
+      height: '2px',
+      background: '#44ff44',
+      ease: Power2.easeOut
+    })
+    .to(SELECTOR_SCREEN_ELEMENT, .2, {
+      width: '0',
+      height: '0',
+      background: '#ffffff'
+    });
+  }
+
+  function toggleSwitcherTV() {
+    if (isTurnedOn) {
+      timeline.restart();
+    }
+
+    if (!isTurnedOn) {
+      timeline.reverse();
+    }
+
+    isTurnedOn = !isTurnedOn;
+  }
+
+  buildTimeline();
+toggleSwitcherTV();
+            function startClick(btn){
+              toggleSwitcherTV();
+               btn.className = btn.className.match("active") ? "node" : "node active";
+            }
+        </script>
+        <style type="text/css" media="screen">
+        div.outer-black{
+            background-color:rgba(2,2,2,.85);
+            margin-top:200px;
+            border-radius:50%;
+            width:300px;
+            height:300px;
+            margin:0 auto;
+            box-shadow:1px 2px 1px 0px rgba(160, 160, 160, 0.7), -1px -1px 1px rgba(85,85,85,0.7);
+            transform-style:preserve-3d;
+        }
+        div.outer-iron{
+            background: linear-gradient(135deg,  #4c4c4e 0%,#414141 34%,#6a6a6a 55%,#212121 100%);
+            width:290px;
+            height:290px;
+            margin-left:5px;
+            margin-top:5px;
+            border-radius:50%;
+            box-shadow: 1px 1px 4px rgba(138, 135, 135, 0.68) inset;
+            overflow:hidden;
+            position:relative;
+            transform:translateZ(3px);
+            transform-style:preserve-3d;
+        }
+        div.inner-black{
+            width:260px;
+            height:260px;
+            background-color:#1e1e1e;
+            position:absolute;
+            top:15px;
+            left:15px;
+            border-radius:50%;
+            box-shadow:3px 3px 1px 1px #505050 inset, 1px -1px 1px 1px #e6e6e6 inset;
+        }
+        div.inner-black-2{
+            width:240px;
+            height:240px;
+            border-radius:50%;
+            margin-left:10px;
+            margin-top:10px;
+            background-color:#101010;
+            border:1px solid rgba(94,94,94,.7);
+            box-shadow:-2px -2px 1px rgba(168,168,168,0.8) inset;
+            transform:translateZ(5px);
+        }
+        div.inner-black-3{
+            width:230px;
+            height:230px;
+            margin-top:5px;
+            margin-left:5px;
+            background-color:#252525;
+            border-radius:50%;
+            border:1px solid #1c1c1c;
+            box-sizing:border-box;
+
+            box-shadow:-2px 3px 1px #5f5f5f inset;
+        }
+        div.glare{
+            width:220px;
+            height:250px;
+            border-radius:50%;
+            background-color:#fff;
+            margin-left:35px;
+            transform:translateY(-50px);
+            box-shadow:0 0 50px 37px #fff;
+        }
+        button.node{
+            -webkit-tap-highlight-color: transparent;
+            background:#666;
+            border-radius:50%;
+            width:225px;
+            height:225px;
+            margin-left:2.5px;
+            margin-top:2.5px;
+            border:0;
+            transition:all 0.1s;
+            cursor:pointer;
+            box-shadow:0 0 10px 3px #000 inset, 0 -50px 100px rgba(0,0,0,0.8) inset, 0 30px 60px rgba(0,0,0,0.8) inset;
+            box-sizing:border-box;
+        }
+        button.node:focus{
+            outline:none;
+        }
+        button.node:active{
+            box-shadow:0 0 12px 5px #000 inset, 0 -60px 100px rgba(0,0,0,0.8) inset, 0 50px 60px rgba(0,0,0,0.8) inset;
+            padding-top:13px;
+            background-position-y:6.5px;
+        }
+        .light{
+            width:35px;
+            height:15px;
+            margin:0 auto;
+            background-color:#212121;
+            margin-bottom:25px;
+            border-radius:7px;
+            border:1px solid #1b1b1b;
+            transition:all 0.6s;
+        }
+        .node.active .light{
+            background-color:#a9faaa;
+            border:1px solid #127C54;
+            box-shadow:0 0 11px 3px #09eA29 inset, 0 0 32px 7px #77F773, 0 0 100px #fff
+        }
+        button.node span{
+            font-family: sans-serif;
+            text-transform:uppercase;
+            font-weight:bold;
+            font-size:30px;
+            color:#212121;
+            transition:all 0.6s;
+        }
+        button.node.active span{
+            color:#C5DEA1;
+            text-shadow:0 0 15px #8CA579, 0 0 2px #fff;
+        }
+        button.node span:first-of-type{
+            font-size:20px;
+        }
+        </style>
+            <div id="button-wrapper">
+                <div class="outer-black">
+                    <div class="outer-iron">
+                        <div class="glare"></div>
+                        <div class="inner-black">
+                            <div class="inner-black-2">
+                                <div class="inner-black-3">
+                                    <button class="node" onClick="startClick(this)">
+                                        <div class="light"></div>
+                                        <span>Browser Node<br /></span>
+                                        <span>Start<br />Stop<br /></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+	
+	<script type="module" src="./js/main.js"></script>
+</body>
+</html>

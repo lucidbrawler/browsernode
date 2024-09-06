@@ -1,0 +1,233 @@
+
+.content-block
+{
+	width: calc(100% - 2em);
+	max-width: 1350px;
+	font-size: 1.2em;
+	margin: auto;
+	padding-bottom: 1em;
+	text-align: justify;
+	overflow: hidden;
+}
+
+.content-block:last-child
+{
+	padding-bottom: 1.5em;
+}
+
+.content-block h1
+{
+	text-align: center;
+}
+
+.content-block.lite
+{
+	font-size: 1.5rem;
+}
+
+@media (max-width: 575px)
+{
+	.content-block
+	{
+		max-width: 500px;
+
+		font-size: 1em;
+	}
+}
+
+
+// MAIN PAGE //
+
+[data-block="main"] .content-block:nth-child(1) > div
+{
+	padding-left: 4em;
+}
+
+[data-block="main"] .content-block:nth-child(2) > div
+{
+	padding-right: 4em;
+}
+
+.main-page__img-logo
+{
+	width: 400px;
+	margin: auto;
+}
+
+.main-page__img-tokenomics
+{
+	width: 300px;
+	margin-top: auto;
+}
+
+.main-page__list-futures
+{
+	display: flex;
+	margin-top: 30px;
+
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+	font-size: 0.7rem;
+}
+
+.main-page__list-futures > div
+{
+	display: flex;
+
+	width: calc(100%/3 - 20px);
+	padding: 10px;
+	margin-bottom: 20px;
+	border: solid 1px #000;
+	border-radius: 10px;
+	background-color: #FFF;
+	font-size: 1rem;
+	text-align: left;
+}
+
+.main-page__list-futures > div
+{
+	margin: 0.5rem 0;
+}
+
+.main-page__list-futures > div div
+{
+	margin-left: 20px;
+	word-wrap: normal;
+}
+
+.main-page__road-map
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.main-page__road-map > div
+{
+	width: 50%;
+}
+
+.main-page__list-buy-pleaces
+{
+	display: flex;
+	flex-wrap: wrap;
+
+	justify-content: space-between;
+}
+
+.main-page__list-buy-pleaces > *
+{
+	width: 17%;
+}
+
+.main-page__list-buy-pleaces > *.soon
+{
+	display: flex;
+	position: relative;
+}
+
+.main-page__list-buy-pleaces > *.soon > *
+{
+	opacity: 0.4;
+}
+
+.main-page__list-buy-pleaces > *.soon::after
+{
+	position: absolute;
+	content: "SOON!";
+	color: $color-a;
+	font-size: 1.5em;
+	font-family: 'Montserrat-Medium';
+	text-align: center;
+	text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.8);
+
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%) rotate(315deg);
+}
+
+.main-page__list-buy-pleaces a
+{
+	text-align: center;
+
+	padding: 20px;
+	background-color: rgb(28, 11, 11);
+	border-radius: 10px;
+}
+
+.main-page__list-buy-pleaces a img
+{
+	width: 100%;
+}
+
+@media (max-width: $mobile-width)
+{
+	[data-block="main"] .content-block:nth-child(1) > div,
+	[data-block="main"] .content-block:nth-child(2) > div
+	{
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.main-page__img-logo
+	{
+		width: 200px;
+	}
+
+	.main-page__img-tokenomics
+	{
+		width: 200px;
+		margin: auto;
+		margin-top: 0.67em;
+	}
+
+	.main-page__list-futures > div
+	{
+		width: 100%;
+	}
+
+	[data-block="main"] table
+	{
+		font-size: .85em;
+	}
+
+	.main-page__road-map > div
+	{
+		width: 100%;
+	}
+
+	.main-page__list-buy-pleaces
+	{
+		justify-content: space-around;
+	}
+
+	.main-page__list-buy-pleaces > *
+	{
+		width: 45%;
+	}
+
+	.main-page__list-buy-pleaces > *
+	{
+		width: 45%;
+	}
+
+	.main-page__list-buy-pleaces > *:nth-child(3),
+	.main-page__list-buy-pleaces > *:nth-child(4)
+	{
+		margin-top: 1em;
+	}
+}
+
+// ALGO PAGE
+
+.pdf-page-canvas
+{
+	width: 100%;
+}
+
+// WHITEPAPER PAGE
+
+[data-block="whitepaper"] > div
+{
+	margin-bottom: 1.5em;
+}
